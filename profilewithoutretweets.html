@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Profile Without Retweets</title>
+        <link rel="icon" type="image/png" href="https://www.jasonbhalla.com/assets/favicon.png"/>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <style type="text/css">
+            .bottomlink {
+                color: white;
+            }
+
+            .bottomlink:hover {
+                color: #bbbbbb;
+            }
+
+            input[type="text"]::placeholder { 
+                text-align: center;
+            }
+
+            input {
+                border-radius: 12px;
+                border: 1px solid #ddd;
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript">
+            var username = document.getElementById("usernameInput").value;
+            var tweetsLink;
+            var tweetsRepliesLink;
+
+            function updateLinks() {
+                document.getElementById("usernameInput").value = document.getElementById("usernameInput").value.replace(/[^a-zA-Z0-9_]/g, ''); //Only allowing the same characters allowed in Twitter usernames (alphanumeric and underscores)
+
+                username = document.getElementById("usernameInput").value;
+
+
+                tweetsLink = "https://twitter.com/search?q=(from%3A" + username + ")%20-filter%3Areplies&f=live";
+                tweetsRepliesLink = "https://twitter.com/search?q=(from%3A" + username + ")&f=live";
+
+
+                if(username == "") {
+                    document.getElementById("tweetsButton").disabled = true;
+                    document.getElementById("tweetsRepliesButton").disabled = true;
+                    document.getElementById("errorMessageUsername1").innerHTML = username;
+                    document.getElementById("errorMessageUsername2").innerHTML = "";
+                }
+
+                else {
+                    document.getElementById("tweetsButton").disabled = false;
+                    document.getElementById("tweetsRepliesButton").disabled = false;
+                    document.getElementById("errorMessageUsername1").innerHTML = username;
+                    document.getElementById("errorMessageUsername2").innerHTML = "@" + username;
+                }
+            }
+
+            function openTweets() {
+                window.open(
+                  tweetsLink,
+                  '_blank'
+                );
+            }
+
+            function openTweetsReplies() {
+                window.open(
+                  tweetsRepliesLink,
+                  '_blank'
+                );
+            }
+        </script>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="https://jasonbhalla.com/">Jason Bhalla</a>
+            </div>
+        </nav>
+
+        <section id="withoutReplies">
+             <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Twitter Profile Without Retweets</h1>
+                <p class="lead">You can use this to see all of someone's Tweets without their Retweets. You can view someone's Tweets, or their Tweets and Replies.</p>
+                <br>
+                <input type="text" placeholder="Username" oninput="updateLinks();" pattern="[A-Za-z]" id="usernameInput">
+                <br><br>
+                <button class="btn btn-lg btn-light" onclick="openTweets()" disabled="true" id="tweetsButton">View Tweets</button>
+                <button class="btn btn-lg btn-light" onclick="openTweetsReplies()" disabled="true" id="tweetsRepliesButton">View Tweets & Replies</button>
+                <br><br><br>
+                <hr>
+                <p>Note: If you get a message like:</p>
+                <i style="color:#444">No results for "(from:<span id="errorMessageUsername1">Username</span>)"<br>
+The term you entered did not bring up any results. You may have mistyped your term or your Search settings could be protecting you from some potentially sensitive content.</i>
+                <br><br>
+                <p>Try refreshing the page. If that doesn't work, either the account <span id="errorMessageUsername2"></span> doesn't exist, or they haven't posted any Tweets.</p>
+            </div>
+        </section>
+
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 text-center">
+                <div class="container px-4"><a class="bottomlink" href="https://jasonbhalla.com" style="text-decoration: none;" target="_blank">jasonbhalla.com</a><a class="bottomlink" href="https://jasonbhalla.com/projects" style="text-decoration: none;" target="_blank">/projects</a><a class="bottomlink" href="https://jasonbhalla.com/projects/profilewithoutretweets" style="text-decoration: none;" target="_blank">/profilewithoutretweets</a></div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
