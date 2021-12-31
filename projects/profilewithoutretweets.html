@@ -39,8 +39,8 @@
                 username = document.getElementById("usernameInput").value;
 
 
-                tweetsLink = "https://twitter.com/search?q=(from%3A" + username + ")%20-filter%3Areplies&f=live";
-                tweetsRepliesLink = "https://twitter.com/search?q=(from%3A" + username + ")&f=live";
+                tweetsLink = "Twitter://https://twitter.com/search?q=(from%3A" + username + ")%20-filter%3Areplies&f=live";
+                tweetsRepliesLink = "Twitter://https://twitter.com/search?q=(from%3A" + username + ")&f=live";
 
 
                 if(username == "") {
@@ -92,6 +92,7 @@
                 <button class="btn btn-lg btn-light" onclick="openTweetsReplies()" disabled="true" id="tweetsRepliesButton">View Tweets & Replies</button>
                 <br><br><br>
                 <hr>
+                <p>Note: If you get a message like:</p>
                 <p>Note: If you get a message like:</p>
                 <i style="color:#444">No results for "(from:<span id="errorMessageUsername1">Username</span>)"<br>
 The term you entered did not bring up any results. You may have mistyped your term or your Search settings could be protecting you from some potentially sensitive content.</i>
